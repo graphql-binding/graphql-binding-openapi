@@ -31,7 +31,7 @@ A service endpoint that uses the Swagger/OpenAPI specification contains a defini
 ```
 An example for the petstore endpoint can be found [here](./example/petstore.json).
 
-This endpoint definition is transformed into a GraphQL schema, with all the paths from the endpoint translated into queries and mutations. This schema looks like this:
+This endpoint definition is transformed into a GraphQL schema, with all the paths from the endpoint translated into queries and mutations. The query and mutation names are based on the unique `operationName` found in the definition for each path. This schema looks like this:
 ```graphql
 type Query {
   # GET /pet/findPetsByStatus
