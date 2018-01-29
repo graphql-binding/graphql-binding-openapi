@@ -42,6 +42,19 @@ const server = new GraphQLServer({
 server.start(() => console.log('Server running on http://localhost:4000'))
 ```
 
+## graphql-config support
+
+OpenAPI bindings are supported in `graphql-config` using its extensions model. OpenAPI bindings can be added to the configuration like this:
+```yaml
+projects:
+  petstore:
+    schemaPath: src/generated/petstore.graphql
+    extensions:
+      openapi:
+        definition: petstore.json
+```
+This will enable running `graphql get-schema` to output the generated schema from the definition to the defined schemaPath.
+
 ## Static bindings
 Static binding support coming soon.
 
