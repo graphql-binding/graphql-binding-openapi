@@ -34,16 +34,23 @@ An example for the petstore endpoint can be found [here](./example/petstore.json
 This endpoint definition is transformed into a GraphQL schema, with all the paths from the endpoint translated into queries and mutations. This schema looks like this:
 ```graphql
 type Query {
+  """ GET /pet/findPetsByStatus """
   findPetsByStatus(status: [String]): [findPetsByStatus_items]
+  """ GET /pet/findPetsByTags """
   findPetsByTags(tags: [String]): [findPetsByTags_items]
+  """ GET /pet/{petId} """
   getPetById(petId: String): getPetById
   # other queries
 }
 
 type Mutation {
+  """ POST /pet """
   addPet(body: param_addPet_body): addPet
+  """ PUT /pet """
   updatePet(body: param_updatePet_body): updatePet
+  """ PUT /pet/{petId} """
   updatePetWithForm(petId: String, name: String, status: String): updatePetWithForm
+  """ DELETE /pet/{petId} """
   deletePet(api_key: String, petId: String): deletePet
   # other mutations
 }
