@@ -1,0 +1,6 @@
+projects:
+  petstore:
+    schemaPath: petstore.graphql
+    extensions:
+      openapi:
+        definition: petstore.json
