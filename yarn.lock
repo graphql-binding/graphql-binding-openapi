@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@kbrandwijk/swagger-to-graphql@2.4.2":
-  version "2.4.2"
-  resolved "https://registry.yarnpkg.com/@kbrandwijk/swagger-to-graphql/-/swagger-to-graphql-2.4.2.tgz#1b1b0537cd94b31d1bd83091ac795740e231af19"
+"@kbrandwijk/swagger-to-graphql@2.4.3":
+  version "2.4.3"
+  resolved "https://registry.yarnpkg.com/@kbrandwijk/swagger-to-graphql/-/swagger-to-graphql-2.4.3.tgz#7c0fb2410eb0b6b9cc81fad28cc20f9386153cf1"
   dependencies:
     babel-runtime "^6.25.0"
     isomorphic-fetch "^2.2.1"
