@@ -2,12 +2,11 @@
 # yarn lockfile v1
 
 
-"@kbrandwijk/swagger-to-graphql@1.4.2":
-  version "1.4.2"
-  resolved "https://registry.yarnpkg.com/@kbrandwijk/swagger-to-graphql/-/swagger-to-graphql-1.4.2.tgz#3d15b9396cc0f519e81f156202dbb6c7147971c9"
+"@kbrandwijk/swagger-to-graphql@2.4.2":
+  version "2.4.2"
+  resolved "https://registry.yarnpkg.com/@kbrandwijk/swagger-to-graphql/-/swagger-to-graphql-2.4.2.tgz#1b1b0537cd94b31d1bd83091ac795740e231af19"
   dependencies:
     babel-runtime "^6.25.0"
-    graphql "^0.12.3"
     isomorphic-fetch "^2.2.1"
     js-yaml "^3.8.4"
     json-schema-ref-parser "^3.1.2"
@@ -320,7 +319,7 @@ graphql-tools@2.18.0:
     graphql-subscriptions "^0.5.6"
     uuid "^3.1.0"
 
-graphql@0.12.3, graphql@^0.12.3:
+graphql@0.12.3:
   version "0.12.3"
   resolved "https://registry.yarnpkg.com/graphql/-/graphql-0.12.3.tgz#11668458bbe28261c0dcb6e265f515ba79f6ce07"
   dependencies:
