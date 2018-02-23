@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@kbrandwijk/swagger-to-graphql": "2.4.2",
-    "graphql": "0.12.3",
+    "graphql": "0.13.1",
     "graphql-binding": "1.2.0"
   },
   "devDependencies": {
