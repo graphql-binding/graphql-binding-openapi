@@ -91,10 +91,10 @@ const resolvers = {
 const server = new GraphQLServer({ 
   resolvers, 
   typeDefs,
-  context: async req => {
+  context: async req => ({
     ...req,
     petstore: await OpenApi.init('./petstore.json', 'http://petstore.swagger.io/v2')
-  }
+  })
 })
 
 server.start(() => console.log('Server running on http://localhost:4000'))
