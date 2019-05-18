@@ -1,6 +1,6 @@
 const { OpenApi } = require('../dist')
 
-OpenApi.init('./petstore.json', 'http://petstore.swagger.io/v2').then(binding => {
+OpenApi.init('./petstore.json').then(binding => {
     binding.query.findPetsByStatus({ status: "available"}, {}, '{ id name }').then(
         res => console.log(res))
 })

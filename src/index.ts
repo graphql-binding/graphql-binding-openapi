@@ -1,4 +1,4 @@
-import * as build from '@kbrandwijk/swagger-to-graphql';
+import * as build from 'swagger-to-graphql';
 import { Binding } from 'graphql-binding';
 import { QueryMap, SubscriptionMap } from 'graphql-binding/dist/types'
 

@@ -10,8 +10,8 @@
     "test": "echo No tests yet"
   },
   "dependencies": {
-    "@kbrandwijk/swagger-to-graphql": "2.4.3",
-    "graphql-binding": "1.2.3"
+    "graphql-binding": "1.2.3",
+    "swagger-to-graphql": "1.6.0"
   },
   "devDependencies": {
     "@types/node": "9.4.6",

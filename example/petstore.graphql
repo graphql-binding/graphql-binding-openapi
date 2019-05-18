@@ -1,9 +1,16 @@
-# source: 
-# timestamp: Mon Jan 29 2018 16:16:30 GMT+0100 (W. Europe Standard Time)
-
 type addPet {
   """default field"""
   empty: String
+}
+
+type Category {
+  id: String
+  name: String
+}
+
+input CategoryInput {
+  id: String
+  name: String
 }
 
 type createUser {
@@ -36,96 +43,9 @@ type deleteUser {
   empty: String
 }
 
-type findPetsByStatus_items {
-  id: String
-  category: findPetsByStatus_items_category
-  name: String
-  photoUrls: [String]
-  tags: [findPetsByStatus_items_tags_items]
-
-  """pet status in the store"""
-  status: String
-}
-
-type findPetsByStatus_items_category {
-  id: String
-  name: String
-}
-
-type findPetsByStatus_items_tags_items {
-  id: String
-  name: String
-}
-
-type findPetsByTags_items {
-  id: String
-  category: findPetsByTags_items_category
-  name: String
-  photoUrls: [String]
-  tags: [findPetsByTags_items_tags_items]
-
-  """pet status in the store"""
-  status: String
-}
-
-type findPetsByTags_items_category {
-  id: String
-  name: String
-}
-
-type findPetsByTags_items_tags_items {
-  id: String
-  name: String
-}
-
 type getInventory {
   """default field"""
   empty: String
-}
-
-type getOrderById {
-  id: String
-  petId: String
-  quantity: Int
-  shipDate: String
-
-  """Order Status"""
-  status: String
-  complete: Boolean
-}
-
-type getPetById {
-  id: String
-  category: getPetById_category
-  name: String
-  photoUrls: [String]
-  tags: [getPetById_tags_items]
-
-  """pet status in the store"""
-  status: String
-}
-
-type getPetById_category {
-  id: String
-  name: String
-}
-
-type getPetById_tags_items {
-  id: String
-  name: String
-}
-
-type getUserByName {
-  id: String
-  username: String
-  firstName: String
-  lastName: String
-  email: String
-  password: String
-  phone: String
-
-  """User Status"""
-  userStatus: Int
 }
 
 type loginUser {
@@ -139,72 +59,30 @@ type logoutUser {
 }
 
 type Mutation {
-  addPet(body: param_addPet_body): addPet
-  updatePet(body: param_updatePet_body): updatePet
-  updatePetWithForm(petId: String, name: String, status: String): updatePetWithForm
-  deletePet(api_key: String, petId: String): deletePet
-  placeOrder(body: param_placeOrder_body): placeOrder
+  addPet(body: PetInput!): addPet!
+  updatePet(body: PetInput!): updatePet!
+  updatePetWithForm(petId: String!, name: String, status: String): updatePetWithForm!
+  deletePet(api_key: String, petId: String!): deletePet!
+  placeOrder(body: OrderInput!): Order!
 
   """
   For valid response try integer IDs with positive integer value. Negative or non-integer values will generate API errors
   """
-  deleteOrder(orderId: String): deleteOrder
+  deleteOrder(orderId: String!): deleteOrder!
 
   """This can only be done by the logged in user."""
-  createUser(body: param_createUser_body): createUser
-  createUsersWithArrayInput(body: param_createUsersWithArrayInput_body): createUsersWithArrayInput
-  createUsersWithListInput(body: param_createUsersWithListInput_body): createUsersWithListInput
+  createUser(body: UserInput!): createUser!
+  createUsersWithArrayInput(body: param_createUsersWithArrayInput_bodyInput!): createUsersWithArrayInput!
+  createUsersWithListInput(body: param_createUsersWithListInput_bodyInput!): createUsersWithListInput!
 
   """This can only be done by the logged in user."""
-  updateUser(username: String, body: param_updateUser_body): updateUser
+  updateUser(username: String!, body: UserInput!): updateUser!
 
   """This can only be done by the logged in user."""
-  deleteUser(username: String): deleteUser
+  deleteUser(username: String!): deleteUser!
 }
 
-"""Pet object that needs to be added to the store"""
-input param_addPet_body {
-  """default field"""
-  empty: String
-}
-
-"""Created user object"""
-input param_createUser_body {
-  """default field"""
-  empty: String
-}
-
-"""List of user object"""
-input param_createUsersWithArrayInput_body {
-  """default field"""
-  empty: String
-}
-
-"""List of user object"""
-input param_createUsersWithListInput_body {
-  """default field"""
-  empty: String
-}
-
-"""order placed for purchasing the pet"""
-input param_placeOrder_body {
-  """default field"""
-  empty: String
-}
-
-"""Pet object that needs to be added to the store"""
-input param_updatePet_body {
-  """default field"""
-  empty: String
-}
-
-"""Updated user object"""
-input param_updateUser_body {
-  """default field"""
-  empty: String
-}
-
-type placeOrder {
+type Order {
   id: String
   petId: String
   quantity: Int
@@ -215,28 +93,83 @@ type placeOrder {
   complete: Boolean
 }
 
+input OrderInput {
+  id: String
+  petId: String
+  quantity: Int
+  shipDate: String
+
+  """Order Status"""
+  status: String
+  complete: Boolean
+}
+
+"""List of user object"""
+input param_createUsersWithArrayInput_bodyInput {
+  """default field"""
+  empty: String
+}
+
+"""List of user object"""
+input param_createUsersWithListInput_bodyInput {
+  """default field"""
+  empty: String
+}
+
+type Pet {
+  id: String
+  category: Category
+  name: String
+  photoUrls: [String!]!
+  tags: [Tag!]
+
+  """pet status in the store"""
+  status: String
+}
+
+input PetInput {
+  id: String
+  category: CategoryInput
+  name: String
+  photoUrls: [String!]!
+  tags: [TagInput!]
+
+  """pet status in the store"""
+  status: String
+}
+
 type Query {
   """Multiple status values can be provided with comma separated strings"""
-  findPetsByStatus(status: [String]): [findPetsByStatus_items]
+  findPetsByStatus(status: [String!]!): [Pet!]!
 
   """
   Muliple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.
   """
-  findPetsByTags(tags: [String]): [findPetsByTags_items]
+  findPetsByTags(tags: [String!]!): [Pet!]!
 
   """Returns a single pet"""
-  getPetById(petId: String): getPetById
+  getPetById(petId: String!): Pet!
 
   """Returns a map of status codes to quantities"""
-  getInventory: getInventory
+  getInventory: getInventory!
 
   """
   For valid response try integer IDs with value >= 1 and <= 10. Other values will generated exceptions
   """
-  getOrderById(orderId: String): getOrderById
-  loginUser(username: String, password: String): loginUser
-  logoutUser: logoutUser
-  getUserByName(username: String): getUserByName
+  getOrderById(orderId: String!): Order!
+  loginUser(username: String!, password: String!): loginUser!
+  logoutUser: logoutUser!
+  getUserByName(username: String!): User!
+}
+
+type Tag {
+  id: String
+  name: String
+}
+
+input TagInput {
+  id: String
+  name: String
 }
 
 type updatePet {
@@ -253,3 +186,30 @@ type updateUser {
   """default field"""
   empty: String
 }
+
+type User {
+  id: String
+  username: String
+  firstName: String
+  lastName: String
+  email: String
+  password: String
+  phone: String
+
+  """User Status"""
+  userStatus: Int
+}
+
+input UserInput {
+  id: String
+  username: String
+  firstName: String
+  lastName: String
+  email: String
+  password: String
+  phone: String
+
+  """User Status"""
+  userStatus: Int
+}
+
