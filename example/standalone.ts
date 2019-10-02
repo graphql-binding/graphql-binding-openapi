@@ -5,7 +5,7 @@ import fetch from 'node-fetch';
 async function callBackend({
   requestOptions: { method, body, baseUrl, path, query, headers },
 }: CallBackendArguments<{}>) {
-  const url = `${baseUrl}${path}?${new URLSearchParams(query as any)}`;
+  const url = `${baseUrl}${path}?${new URLSearchParams(query as Record<string, string>)}`;
   const response = await fetch(url, {
     method,
     headers: {
