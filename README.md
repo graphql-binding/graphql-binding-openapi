@@ -89,6 +89,8 @@ See [example directory](example) for a standalone example.
 
 ### With `graphql-yoga`
 
+The options passed to `OpenAPI.init()` are documented at [swagger-to-graphql](https://github.com/yarax/swagger-to-graphql).
+
 ```js
 const { OpenApi } = require('graphql-binding-openapi')
 const { GraphQLServer } = require('graphql-yoga')
@@ -106,7 +108,7 @@ const server = new GraphQLServer({
   typeDefs,
   context: async req => {
     ...req,
-    petstore: await OpenApi.init('./petstore.json', 'http://petstore.swagger.io/v2')
+    petstore: await OpenApi.init(swaggerToGraphqlOptions)
   }
 })
 
