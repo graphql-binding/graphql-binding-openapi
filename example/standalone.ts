@@ -1,10 +1,10 @@
-import { CallBackendArguments } from "swagger-to-graphql";
-import { OpenApi } from "../dist";
+import { CallBackendArguments } from 'swagger-to-graphql';
+import { OpenApi } from '../dist';
 import fetch from 'node-fetch';
 
 async function callBackend({
-                             requestOptions: { method, body, baseUrl, path, query, headers },
-                           }: CallBackendArguments<{}>) {
+  requestOptions: { method, body, baseUrl, path, query, headers },
+}: CallBackendArguments<{}>) {
   const url = `${baseUrl}${path}?${new URLSearchParams(query as any)}`;
   const response = await fetch(url, {
     method,
@@ -28,8 +28,9 @@ async function callBackend({
 
 OpenApi.init({
   swaggerSchema: require.resolve('./petstore.json'),
-  callBackend
+  callBackend,
 }).then(binding => {
-  binding.query.findPetsByStatus({ status: "available" }, {}, '{ id name }').then(
-    res => console.log(res))
+  binding.query
+    .findPetsByStatus({ status: 'available' }, {}, '{ id name }')
+    .then(res => console.log(res));
 });
