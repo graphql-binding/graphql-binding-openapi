@@ -7,15 +7,18 @@
   "scripts": {
     "prepare": "npm run build",
     "build": "rm -rf dist && tsc -d",
-    "test": "echo No tests yet"
+    "test": "echo No tests yet",
+    "example": "ts-node example/standalone"
   },
   "dependencies": {
     "graphql-binding": "1.2.3",
-    "swagger-to-graphql": "1.6.0"
+    "swagger-to-graphql": "^4.0.2"
   },
   "devDependencies": {
     "@types/node": "9.4.6",
     "graphql": "0.13.1",
+    "node-fetch": "^2.6.0",
+    "ts-node": "^8.4.1",
     "typescript": "2.7.2"
   },
   "peerDependencies": {
