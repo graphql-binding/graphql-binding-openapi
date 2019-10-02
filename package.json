@@ -15,11 +15,11 @@
     "swagger-to-graphql": "^4.0.2"
   },
   "devDependencies": {
-    "@types/node": "9.4.6",
-    "graphql": "0.13.1",
+    "@types/node": "^12.7.9",
+    "graphql": "^14.5.8",
     "node-fetch": "^2.6.0",
     "ts-node": "^8.4.1",
-    "typescript": "2.7.2"
+    "typescript": "^3.6.3"
   },
   "peerDependencies": {
     "graphql": "^0.11.0 || ^0.12.0 || ^0.13.0"
