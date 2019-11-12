@@ -16,7 +16,11 @@
     request-promise "^4.1.1"
     yargs "^8.0.2"
 
-"@types/node@9.4.6", "@types/node@^9.4.6":
+"@types/node@9.6.55":
+  version "9.6.55"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-9.6.55.tgz#7cc1358c9c18e71f6c020e410962971863232cf5"
+
+"@types/node@^9.4.6":
   version "9.4.6"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-9.4.6.tgz#d8176d864ee48753d053783e4e463aec86b8d82e"
 
